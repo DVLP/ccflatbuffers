@@ -1,0 +1,17 @@
+{
+  "name": "CC test on flatbuffers",
+  "version": "1.0.0",
+  "description": "CC test on flatbuffers",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "generate": "flatc --ts -o tsbuildtmp fbs/item.fbs && node fix-imports.js && npx tsc --outDir item",
+    "build": "esbuild index.js --bundle --outdir=tmp && google-closure-compiler --js='tmp/index.js' --js_output_file='dist/bundle.js' --compilation_level=ADVANCED --language_in=ECMASCRIPT_2020 --language_out=ECMASCRIPT_2020 --module_resolution=NODE --process_common_js_modules --assume_function_wrapper --dependency_mode=PRUNE --entry_point='./tmp/index.js' --externs='flatbuffers.externs.js' --create_source_map='dist/bundle.js.map' --debug --formatting=PRETTY_PRINT"
+  },
+  "dependencies": {
+    "esbuild": "^0.24.2",
+    "express": "^4.18.2",
+    "google-closure-compiler": "^20250101.0.0-nightly",
+    "typescript": "^5.7.2"
+  }
+}

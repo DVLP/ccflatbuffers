@@ -1,0 +1,7 @@
+namespace stuff;
+
+table Item {
+  uuid:string;
+}
+
+root_type Item;

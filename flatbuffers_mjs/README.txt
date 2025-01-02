@@ -1,0 +1,1 @@
+This is mjs folder from flatbuffers package
